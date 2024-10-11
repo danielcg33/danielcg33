@@ -1,14 +1,14 @@
 ## Práctica3    COMANDO DIG 
 
 
-
+*******
 
 
 ### 1
 
 
 Se lleva a cabo una consulta de tipo DNS empleando el comando DIG para el dominio específico "danielcastelao.org".
-El comando DIG lleva a cabo al acción de resolución de nombres de dominio categorizando la información vinculada .
+El comando DIG lleva a cabo la acción de resolución de nombres de dominio categorizando la información vinculada .
 Se muestran varios campos asociados a la respuesta de la consulta .
 
 
@@ -43,7 +43,7 @@ El tipo de registro asociado a ambas direcciones puede ser una de las diferencia
 Obtenemos el nombre IP de los servidores autoritativos para la dirección www.danielcastelao.org.
 
 
-**dig NS danielcastelao.org**
+```**dig NS danielcastelao.org**```
 
 
 En la sección de AUTHORITY SECTION se puede obtener la informnación de los DNS autoritativos vinculados .
@@ -55,16 +55,16 @@ Lo habitual es que sean varios los que aparecen ya que se intenta siempre genera
 
 
 
-Con la opción -x , el comando dig permite realizar la operación de resolución de una IP particular a un nombre de dominio . Para el caso particular 
+Con la opción -x , el comando dig permite realizar la operación de resolución de una IP particular a un nombre de dominio . Para el caso particular. 
 
 
-**dig -x  130.206.164.68**
+```**dig -x  130.206.164.68**```
 
 
-Otras IPs que se pueden ulizar para ejemplificar la acción asociada al parámetro del comando
+Otras IPs que se pueden ulizar para ejemplificar la acción asociada al parámetro del comando son.
 
-**dig -x 8.8.8.1**
-**dig -x 8.8.4.3**
+```**dig -x 8.8.8.1**```
+```**dig -x 8.8.4.3**```
 
 
 
@@ -75,7 +75,7 @@ Otras IPs que se pueden ulizar para ejemplificar la acción asociada al parámet
 Para obtener el nombre del servidor al que se está haciendo consultas 
 
 
-**cat /etc/resolv.conf**
+```**cat /etc/resolv.conf**```
 
 
 En este archivo se puede obtener los nombres de los servidores DNS asociados al sistema 
@@ -92,17 +92,17 @@ EL registro SOA ofrece información sobre la zona DNS y el servidor principal
 
 Para el caso de _danielcastelao.org_
 
-**dig NS danielcastelao.org**
+```**dig NS danielcastelao.org**```
 
 Se emplea posteriormente uno de los servidores autoritativos que se ofrecen 
 
-**dig @<nombre_servidor autoritativo> SOA moodle.danielcastelao.org**
+```**dig @<nombre_servidor autoritativo> SOA moodle.danielcastelao.org**```
 
 
 Para consultar el servidor de Google 
 
 
-**dig @8.8.8.8 SOA moodle.danielcastelao.org**
+```**dig @8.8.8.8 SOA moodle.danielcastelao.org**```
 
 
 
@@ -114,7 +114,7 @@ Para consultar el servidor de Google
 Empleamos 
 
 
-**dig www.elpais.com**
+```**dig www.elpais.com**```
 
 
 En el apartado de ANSWER SECTION se encuentra el campo TTL , que hacer referencia al tiempo que el registro determinado estará almacenado en la caché del servidor DNS (medido en unidades de segundos)
@@ -137,7 +137,7 @@ La diferencia que puede existir en el valor TTL de difentes dominios pueden debe
 Sin pasar por cachés intermedias , se puede consultar el valor de   TTL vinculado a un registro .
 
 
-**dig @<nombre_servidorautoritativo> dominio.com**
+```**dig @<nombre_servidorautoritativo> dominio.com**```
 
 
 
@@ -149,7 +149,7 @@ Sin pasar por cachés intermedias , se puede consultar el valor de   TTL vincula
 Para ver las IPs del dominio solicitado 
 
 
-**dig www.google.es** 
+```**dig www.google.es**``` 
 
 Las múltiples IPs se deben a una intención de generar un balanceo de carga , pudiendo variar en función de la localización del equipo local , momento del dia , etc
 
@@ -164,7 +164,7 @@ Las múltiples IPs se deben a una intención de generar un balanceo de carga , p
 La realización de una consulta a un servidor raiz 
 
 
-**dig   @j.root-server.net www.google.es**
+```**dig   @j.root-server.net www.google.es**```
 
 
 
@@ -178,7 +178,7 @@ Con el objeto de ver todas las consultas del servidor DNS
 
 
 
-**dig +trace www.timesonline.co.uk**
+```**dig +trace www.timesonline.co.uk**```
 
 
 
@@ -192,7 +192,7 @@ Con el objeto de ver todas las consultas del servidor DNS
 Se obtiene los registros _MX_  el cual aporta información asociada a los servidores de correo de un dominio en específico
 
 
-**dig MX danielcastelao.org**
+```**dig MX danielcastelao.org**```
 
 
 
@@ -207,7 +207,7 @@ Se obtienen los registros de IPv6 de _www.facebook.com_
 
 
 
-**dig AAAA www.facebook.com** 
+```**dig AAAA www.facebook.com**``` 
 
 
 
