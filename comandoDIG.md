@@ -1,32 +1,33 @@
-Práctica3    COMANDO DIG 
+## Práctica3    COMANDO DIG 
 
 
 
 
 
-1
+### 1
 
 
 Se lleva a cabo una consulta de tipo DNS empleando el comando DIG para el dominio específico "danielcastelao.org".
 El comando DIG lleva a cabo al acción de resolución de nombres de dominio categorizando la información vinculada .
 Se muestran varios campos asociados a la respuesta de la consulta .
 
-- QUERY SECTION .....   nombre de dominio más el tipo de registro (busca la ip asociada la dominio)
 
-- HEADER ..... información sobre la consulta ( identificadores, etc)
+- _**QUERY SECTION**_ .....   nombre de dominio más el tipo de registro (busca la ip asociada la dominio)
 
-- ANSWER SECTION ..... se ofrecen todos los registros encontrados
+- _**HEADER**_ ..... información sobre la consulta ( identificadores, etc)
 
-- AUTHORITY SECTION ..... se hace referencia a los servidores autoritativos del dominio
+- _**ANSWER SECTION**_ ..... se ofrecen todos los registros encontrados
 
-- ADDITIONAL SECTION ..... datos de carácter adicional
+- _**AUTHORITY SECTION**_ ..... se hace referencia a los servidores autoritativos del dominio
 
-- OPT PSEUDOSECTION .....  información asociada a las extendiones de DNS
+- _**ADDITIONAL SECTION**_ ..... datos de carácter adicional
+
+- _**OPT PSEUDOSECTION**_ .....  información asociada a las extendiones de DNS
 
 
 
 
-2
+### 2
 
 
 
@@ -35,14 +36,14 @@ El tipo de registro asociado a ambas direcciones puede ser una de las diferencia
 
 
 
-3
+### 3
 
 
 
 Obtenemos el nombre IP de los servidores autoritativos para la dirección www.danielcastelao.org.
 
 
-dig NS danielcastelao.org
+**dig NS danielcastelao.org**
 
 
 En la sección de AUTHORITY SECTION se puede obtener la informnación de los DNS autoritativos vinculados .
@@ -50,31 +51,31 @@ Lo habitual es que sean varios los que aparecen ya que se intenta siempre genera
 
 
 
-4
+### 4
 
 
 
 Con la opción -x , el comando dig permite realizar la operación de resolución de una IP particular a un nombre de dominio . Para el caso particular 
 
 
-dig -x  130.206.164.68
+**dig -x  130.206.164.68**
 
 
 Otras IPs que se pueden ulizar para ejemplificar la acción asociada al parámetro del comando
 
-dig -x 8.8.8.1
-dig -x 8.8.4.3
+**dig -x 8.8.8.1**
+**dig -x 8.8.4.3**
 
 
 
-5
+### 5
 
 
 
 Para obtener el nombre del servidor al que se está haciendo consultas 
 
 
-cat /etc/resolv.conf
+**cat /etc/resolv.conf**
 
 
 En este archivo se puede obtener los nombres de los servidores DNS asociados al sistema 
@@ -82,38 +83,38 @@ En este archivo se puede obtener los nombres de los servidores DNS asociados al 
 
 
 
-6
+### 6
 
 
 
 EL registro SOA ofrece información sobre la zona DNS y el servidor principal 
 
 
-Para el caso de danielcastelao.org
+Para el caso de _danielcastelao.org_
 
-dig NS danielcastelao.org
+**dig NS danielcastelao.org**
 
 Se emplea posteriormente uno de los servidores autoritativos que se ofrecen 
 
-dig @<nombre_servidor autoritativo> SOA moodle.danielcastelao.org
+**dig @<nombre_servidor autoritativo> SOA moodle.danielcastelao.org**
 
 
 Para consultar el servidor de Google 
 
 
-dig @8.8.8.8 SOA moodle.danielcastelao.org
+**dig @8.8.8.8 SOA moodle.danielcastelao.org**
 
 
 
 
-7
+### 7
 
 
 
 Empleamos 
 
 
-dig www.elpais.com
+**dig www.elpais.com**
 
 
 En el apartado de ANSWER SECTION se encuentra el campo TTL , que hacer referencia al tiempo que el registro determinado estará almacenado en la caché del servidor DNS (medido en unidades de segundos)
@@ -122,33 +123,33 @@ El TTL va cambiando su valor dependiendo del instante en el que se haga la consu
 
 
 
-8
+### 8
 
 
 La diferencia que puede existir en el valor TTL de difentes dominios pueden deberse a la implementación de diferentes políticas de cacheo. Las consultas se hacen con el comando dig 
 
 
 
-9
+### 9
 
 
 
 Sin pasar por cachés intermedias , se puede consultar el valor de   TTL vinculado a un registro .
 
 
-dig @<nombre_servidorautoritativo> dominio.com
+**dig @<nombre_servidorautoritativo> dominio.com**
 
 
 
 
-10
+### 10
 
 
 
 Para ver las IPs del dominio solicitado 
 
 
-dig www.google.es 
+**dig www.google.es** 
 
 Las múltiples IPs se deben a una intención de generar un balanceo de carga , pudiendo variar en función de la localización del equipo local , momento del dia , etc
 
@@ -156,20 +157,20 @@ Las múltiples IPs se deben a una intención de generar un balanceo de carga , p
 
 
 
-11
+### 11
 
 
 
 La realización de una consulta a un servidor raiz 
 
 
-dig   @j.root-server.net www.google.es
+**dig   @j.root-server.net www.google.es**
 
 
 
 
 
-12
+### 12
 
 
 
@@ -177,36 +178,36 @@ Con el objeto de ver todas las consultas del servidor DNS
 
 
 
-dig +trace www.timesonline.co.uk
+**dig +trace www.timesonline.co.uk**
 
 
 
 
 
-13
+### 13
 
 
 
 
-Se obtiene los registros MX  el cual aporta información asociada a los servidores de correo de un dominio en específico
+Se obtiene los registros _MX_  el cual aporta información asociada a los servidores de correo de un dominio en específico
 
 
-dig MX danielcastelao.org
-
-
-
-
-
-14
-
-
-
-Se obtienen los registros de IPv6 de www.facebook.com
+**dig MX danielcastelao.org**
 
 
 
 
-dig AAAA www.facebook.com 
+
+### 14
+
+
+
+Se obtienen los registros de IPv6 de _www.facebook.com_
+
+
+
+
+**dig AAAA www.facebook.com** 
 
 
 
